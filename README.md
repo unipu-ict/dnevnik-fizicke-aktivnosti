@@ -6,5 +6,8 @@ Mobilna aplikacija za praćenje ukupne fizičke aktivnosti (hodanje, trčanje, v
 - Matošić	Matej
 - Bošnjak	Josip
 
+- Siniša Sovilj (voditelj) 
+
+
 
 
