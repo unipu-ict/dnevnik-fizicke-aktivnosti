@@ -23,7 +23,6 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
