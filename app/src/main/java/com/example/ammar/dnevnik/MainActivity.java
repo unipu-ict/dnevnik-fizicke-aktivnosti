@@ -1,40 +1,63 @@
 package com.example.ammar.dnevnik;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
 import android.view.MenuItem;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements IzborListFragment.OnSadrzajSelectedListener {
 
-    // testni komentar
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
+
+        if (findViewById(R.id.fragment_container) != null) {
 
 
-    }
+            if (savedInstanceState != null) {
+                return;
+            }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+            IzborListFragment firstFragment = new IzborListFragment();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+            firstFragment.setArguments(getIntent().getExtras());
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, firstFragment).commit();
         }
-
-        return super.onOptionsItemSelected(item);
     }
+
+    public void onIzborSelected (int position) {
+
+        Izbornik izbornikFrag = (Izbornik)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+        if (izbornikFrag != null) {
+
+            izbornikFrag.updateIzborView(position);
+
+        } else {
+
+            Izbornik newFragment = new Izbornik();
+            Bundle args = new Bundle();
+            args.putInt(Izbornik.ARG_POSITION, position);
+            newFragment.setArguments(args);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+
+            transaction.replace(R.id.fragmentContainer, newFragment);
+            transaction.addToBackStack(null);
+
+
+            transaction.commit();
+        }
+    }
+
+
 }
