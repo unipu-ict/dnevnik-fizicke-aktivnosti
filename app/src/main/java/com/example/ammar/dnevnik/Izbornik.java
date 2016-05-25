@@ -1,6 +1,16 @@
 package com.example.ammar.dnevnik;
 
+import android.app.Fragment;
+import android.app.ListFragment;
 import android.content.Context;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -8,36 +18,48 @@ import java.util.UUID;
 /**
  * Created by acer on 22.5.2016..
  */
-public class Izbornik {
-    /*Klasa služi za spremanje podataka u memoriju i biti će spremljene bez obzira što se s aktivnostima i fragmentima dogodi*/
-    private ArrayList<Izbor> mIzbor;
-    private static Izbornik mIzbornik;
-    private Context mIzborContext;
+public class Izbornik extends Fragment {
+    final static String ARG_POSITION = "position";
+    int mCurrentPosition = -1;
 
-    private Izbornik(Context izborContext){
-        mIzborContext = izborContext;
-        mIzbor = new ArrayList<Izbor>();
-        for (int i=0;i<4;i++){
-            Izbor c = new Izbor();
-            c.setTitle("Izbor #"+i);
-            mIzbor.add(c);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+
+        if (savedInstanceState != null) {
+            mCurrentPosition = savedInstanceState.getInt(ARG_POSITION);
+        }
+
+
+        return inflater.inflate(R.layout.content_main, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Bundle args = getArguments();
+        if (args != null) {
+
+            updateIzborView(args.getInt(ARG_POSITION));
+        } else if (mCurrentPosition != -1) {
+
+            updateIzborView(mCurrentPosition);
         }
     }
 
-    public static Izbornik get(Context c){
-        if(mIzbornik == null){
-            mIzbornik = new Izbornik(c.getApplicationContext());
-        }
-        return mIzbornik;
+    public void updateIzborView(int position) {
+        TextView article = (TextView) getActivity().findViewById(R.id.izbor);
+        article.setText(Izbor.Izbor[position]);
+        mCurrentPosition = position;
     }
-    public ArrayList<Izbor> getIzbor(){
-        return mIzbor;
-    }
-    public Izbor getIzbor(UUID id){
-        for(Izbor c : mIzbor){
-            if(c.getId().equals(id))
-                return c;
-        }
-        return null;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+
+        outState.putInt(ARG_POSITION, mCurrentPosition);
     }
 }
