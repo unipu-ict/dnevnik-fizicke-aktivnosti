@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#461DEC"
+    tools:context="com.example.ammar.dnevnik.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:entries="@array/spinner_choice"
+        android:focusableInTouchMode="false"
+        android:prompt="@string/spinner_text"
+        android:spinnerMode="dropdown" />
+</LinearLayout>
