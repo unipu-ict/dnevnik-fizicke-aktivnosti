@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Dnevnik</string>
     <string name="izbor_naslov"></string>
+    <string name="spinner_text">Odaberite aktivnost:</string>
+    <string-array name="spinner_choice">
+        <item>Trčanje</item>
+        <item>Hodanje</item>
+        <item>Vožnja biciklom</item>
+    </string-array>
     <string name="action_settings">Settings</string>
     <string name="title_activity_go">GoActivity</string>
 </resources>
