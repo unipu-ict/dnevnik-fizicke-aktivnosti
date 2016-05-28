@@ -1,24 +1,23 @@
 package com.example.ammar.dnevnik;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Spinner;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
-    // testni komentar
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
-        if(fragment == null){
-            fragment = new Fragment();
-            fm.beginTransaction().add(R.id.fragmentContainer,fragment).commit();
-        }
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        String selected = spinner.getSelectedItem().toString();
+
+
 
     }
 

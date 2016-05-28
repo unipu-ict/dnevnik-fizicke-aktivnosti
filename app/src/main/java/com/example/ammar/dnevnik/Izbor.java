@@ -1,28 +1,39 @@
 package com.example.ammar.dnevnik;
 
-import java.util.UUID;
-
 /**
  * Created by acer on 23.5.2016..
  */
 public class Izbor {
-    /* generiranje random id a preko uuid-a*/
-    private UUID mId;
-    private String mTitle;
+    private int id;
+    private String izbor;
+    private String selektiranizbor;
 
-    public Izbor(){
-        mId=UUID.randomUUID();
+    public Izbor(int id, String izbor) {
+        this.id = id;
+        this.izbor = izbor;
     }
 
-    public UUID getId() {
-        return mId;
+    public int getId() {
+        return id;
     }
 
-    public String getTitle() {
-        return mTitle;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.mTitle = title;
+    public String getIzbor() {
+        return izbor;
+    }
+
+    public void setIzbor(String izbor) {
+        this.izbor = izbor;
+    }
+
+    public String getSelektiranizbor() {
+        return selektiranizbor;
+    }
+
+    public void setSelektiranizbor(String selektiranizbor) {
+        this.selektiranizbor = selektiranizbor;
     }
 }
