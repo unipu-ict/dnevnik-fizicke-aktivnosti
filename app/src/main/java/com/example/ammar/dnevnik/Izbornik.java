@@ -10,6 +10,7 @@ import java.util.UUID;
  */
 public class Izbornik {
     /*Klasa služi za spremanje podataka u memoriju i biti će spremljene bez obzira što se s aktivnostima i fragmentima dogodi*/
+    //proba
     private ArrayList<Izbor> mIzbor;
     private static Izbornik mIzbornik;
     private Context mIzborContext;
