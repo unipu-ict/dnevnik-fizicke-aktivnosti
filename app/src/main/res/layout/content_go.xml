@@ -13,10 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
+        android:layout_marginTop="155dp"
+        android:src="@mipmap/pocetna"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="125dp"
-        android:src="@mipmap/pocetna" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="120dp"
@@ -25,7 +25,7 @@
         android:background="@android:color/holo_green_light"
         android:textColor="@android:color/black"
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="104dp" />
+        android:layout_marginTop="151dp" />
 </RelativeLayout>
