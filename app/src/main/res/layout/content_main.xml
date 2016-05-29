@@ -19,4 +19,8 @@
         android:focusableInTouchMode="false"
         android:prompt="@string/spinner_text"
         android:spinnerMode="dropdown" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
 </LinearLayout>
